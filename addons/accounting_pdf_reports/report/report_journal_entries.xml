@@ -45,7 +45,6 @@
                                         <th>Date</th>
                                         <th>Partner</th>
                                         <th>Label</th>
-                                        <th>Analytic Account</th>
                                         <th>Debit</th>
                                         <th>Credit</th>
                                     </tr>
@@ -66,9 +65,6 @@
                                             </td>
                                             <td>
                                                 <span t-field="line.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="line.analytic_account_id.display_name"/>
                                             </td>
                                             <td class="text-end">
                                                 <span t-field="line.debit"

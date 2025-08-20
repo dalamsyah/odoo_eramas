@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api
+import io
+import base64
 
 
 class AccountBalanceReport(models.TransientModel):
@@ -18,8 +20,14 @@ class AccountBalanceReport(models.TransientModel):
     def _get_report_data(self, data):
         data = self.pre_print_report(data)
         records = self.env[data['model']].browse(data.get('ids', []))
+        print(records)
+        print(data)
         return records, data
 
     def _print_report(self, data):
         records, data = self._get_report_data(data)
         return self.env.ref('accounting_pdf_reports.action_report_trial_balance').report_action(records, data=data)
+
+    def _print_report_excel(self, data):
+        records, data = self._get_report_data(data)
+        return self.env.ref('accounting_pdf_reports.action_report_trial_balance_xlsx').report_action(records, data=data)
